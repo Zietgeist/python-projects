@@ -32,15 +32,18 @@ YellowbuttonMessage = 'break'
 
 #morse flashing
 def morseFlash():
-    # setup LED
-    LEDPin = 27
-    GPIO.setup(LEDPin, GPIO.OUT)
-    
+  
+    print("morseFlash has been called")
+    print(myMessage)
     myUpperMessage = myMessage.upper() #convert to upper case
     characters = list(myUpperMessage)  #convert to a list
+    print(myUpperMessage)
+    print(characters)
+
 
     for i in range (len(characters)):
         j = characters [i]
+        print(j)
         
         if j == ' ':
             k = (' ')
@@ -49,14 +52,15 @@ def morseFlash():
         else:
             k = (morse.code()[j])
         
+            print(k)
             if k == '.':
-                GPIO.output(LEDpin, True)
+                GPIO.output(LEDPin, True)
                 time.sleep(.1)
                 GPIO.output(LEDPin, False)
                 time.sleep(.1)
             
             if k == '-':
-                GPIO.output(LEDpin, True)
+                GPIO.output(LEDPin, True)
                 time.sleep(.3)
                 GPIO.output(LEDPin, False)
                 time.sleep(.1)
